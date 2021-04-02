@@ -2,6 +2,7 @@
 
 require 'sinatra/base'
 
+# App controller inherits from Sinatra::Base
 class Chitter < Sinatra::Base
   get '/' do
     'Hello World'
