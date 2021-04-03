@@ -1,32 +1,48 @@
-require "./lib/peep"
+# frozen_string_literal: true
+
+require './lib/peep'
 
 describe Peep do
+  let(:peep) { described_class.new(id: 1, message: 'Test peep') }
 
-  describe "#new" do
-    it "makes a new instance of a peep" do
-      peep = Peep.new(id: 1, message: "Test peep")
-      expect(peep).to be_instance_of Peep
-      expect(peep.message).to eq "Test peep"
+  describe '#new' do
+    it 'makes a new instance of a peep' do
+      expect(peep).to be_instance_of described_class
+    end
+
+    it '.message returns the peep message' do
+      expect(peep.message).to eq 'Test peep'
+    end
+
+    it '.id returns the peep id' do
       expect(peep.id).to eq 1
     end
   end
-  
-  describe ".all" do
-    it "returns an array of all the peeps" do
-      Peep.create(message: "Peep test message 1")
-      Peep.create(message: "Peep test message 2")
-      Peep.create(message: "Peep test message 3")
-      expect(Peep.all).to be_an(Array)
-      expect(Peep.all.length).to eq 3
-      expect(Peep.all.first.message).to eq("Peep test message 1")
+
+  describe '.all' do
+    before do
+      described_class.create(message: 'Peep test message 1')
+      described_class.create(message: 'Peep test message 2')
+      described_class.create(message: 'Peep test message 3')
+    end
+
+    it 'returns an array of all the peeps' do
+      expect(described_class.all).to be_an(Array)
+    end
+
+    it 'size of the array of peeps is equal to the number of peeps' do
+      expect(described_class.all.length).to eq 3
+    end
+
+    it 'first peep created is the first item in the array of peeps' do
+      expect(described_class.all.first.message).to eq('Peep test message 1')
     end
   end
-  
-  describe ".create" do
-    it "returns a newly created peep" do
-      created_peep = Peep.create(message: 'Peep test message')
-      expect(created_peep).to be_a Peep
-      expect(created_peep.message).to eq("Peep test message")
+
+  describe '.create' do
+    it 'returns a newly created peep' do
+      created_peep = described_class.create(message: 'Peep test message')
+      expect(created_peep.message).to eq('Peep test message')
     end
   end
 end

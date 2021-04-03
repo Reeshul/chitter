@@ -1,9 +1,8 @@
 # frozen_string_literal: true
 
 require 'sinatra/base'
-require "./lib/peep"
+require './lib/peep'
 
-# App controller inherits from Sinatra::Base
 class Chitter < Sinatra::Base
   get '/' do
     @peeps = Peep.all
@@ -11,8 +10,8 @@ class Chitter < Sinatra::Base
   end
 
   post '/posted' do
-    Peep.create(message: params["post_peep"])
-    redirect("/")
+    Peep.create(message: params['post_peep'])
+    redirect('/')
   end
 
   run! if app_file == $PROGRAM_NAME

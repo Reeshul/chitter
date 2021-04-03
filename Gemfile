@@ -11,6 +11,7 @@ gem 'sinatra-flash'
 group :test do
   gem 'rspec'
   gem 'rubocop', '~> 1.12', require: false
+  gem 'rubocop-rspec', require: false
   gem 'simplecov', require: false
   gem 'simplecov-console', require: false
 end

@@ -11,7 +11,7 @@ ENV['ENVIRONMENT'] = 'test'
 # Run 'test_database_setup.rb' before each test
 
 RSpec.configure do |config|
-  config.before(:each) do
+  config.before do
     setup_test_database
   end
 end
@@ -138,4 +138,5 @@ RSpec.configure do |config|
   #   # test failures related to randomization by passing the same `--seed` value
   #   # as the one that triggered the failure.
   #   Kernel.srand config.seed
+  config.include Capybara::DSL
 end

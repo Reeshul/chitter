@@ -1,7 +1,8 @@
-require "pg"
+# frozen_string_literal: true
+
+require 'pg'
 
 class Peep
-
   attr_reader :id, :message
 
   def initialize(id:, message:)
@@ -10,25 +11,22 @@ class Peep
   end
 
   def self.all
-    if ENV['ENVIRONMENT'] == 'test'
-      connection = PG.connect(dbname: 'chitter_test')
-    else
-      connection = PG.connect(dbname: 'chitter')
-    end
-    result = connection.exec("SELECT * FROM peeps;")
+    result = connect_to_db.exec('SELECT * FROM peeps;')
     result.map do |post|
-      Peep.new(id: post["id"], message: post["message"])
+      Peep.new(id: post['id'], message: post['message'])
     end
-  end
-  
-  def self.create(message:)
-    if ENV['ENVIRONMENT'] == 'test'
-      connection = PG.connect(dbname: 'chitter_test')
-    else
-      connection = PG.connect(dbname: 'chitter')
-    end
-    result = connection.exec("INSERT INTO peeps (message) VALUES ('#{message}') RETURNING id, message;")
-    Peep.new(id: result.first["id"], message: result.first["message"])
   end
 
+  def self.create(message:)
+    result = connect_to_db.exec("INSERT INTO peeps (message) VALUES ('#{message}') RETURNING id, message;")
+    Peep.new(id: result.first['id'], message: result.first['message'])
+  end
+
+  def self.connect_to_db
+    if ENV['ENVIRONMENT'] == 'test'
+      PG.connect(dbname: 'chitter_test')
+    else
+      PG.connect(dbname: 'chitter')
+    end
+  end
 end
