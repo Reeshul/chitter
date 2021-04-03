@@ -1,0 +1,12 @@
+<h1>Chitter</h1>
+<form action="/posted" method="post">
+  <input type="text" name="post_peep" placeholder="What's on your mind?"  />
+  <input type="submit" value="Post" />
+</form>
+<% if @peeps %>
+  <% @peeps.each do |peep| %>
+    <div>
+      <%= peep.message %>
+    </div>
+  <% end %>
+<% end %>
