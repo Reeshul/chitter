@@ -17,7 +17,11 @@ class Chitter < Sinatra::Base
 
   post '/posted' do
     user = User.find(id: session[:user_id])
-    Peep.create(message: params['post_peep'], user_email: user.email)
+    if user
+      Peep.create(message: params['post_peep'], user_email: user.email)
+    else
+      flash[:notice] = 'Please register or log in to peep.'
+    end
     redirect('/')
   end
 
