@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 require 'sinatra/base'
-require "sinatra/flash"
+require 'sinatra/flash'
 require './lib/peep'
 require './lib/user'
 

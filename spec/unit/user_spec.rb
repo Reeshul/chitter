@@ -47,18 +47,18 @@ describe User do
   describe '.authenticate' do
     it 'returns a user given a correct username and password, if one exists' do
       user = create_test_user
-      authenticated_user = User.authenticate(email: 'test@example.com', password: 'password123')
+      authenticated_user = described_class.authenticate(email: 'test@example.com', password: 'password123')
       expect(authenticated_user.id).to eq user.id
     end
 
     it 'returns nil given an incorrect email address' do
-      user = create_test_user
-      expect(User.authenticate(email: 'nottherightemail@me.com', password: 'password123')).to be_nil
+      create_test_user
+      expect(described_class.authenticate(email: 'nottherightemail@me.com', password: 'password123')).to be_nil
     end
 
     it 'returns nil given an incorrect password' do
-      user = create_test_user
-      expect(User.authenticate(email: 'test@example.com', password: 'wrongpassword')).to be_nil
+      create_test_user
+      expect(described_class.authenticate(email: 'test@example.com', password: 'wrongpassword')).to be_nil
     end
   end
 end
