@@ -11,7 +11,7 @@ class Peep
   end
 
   def self.all
-    result = connect_to_db.exec('SELECT * FROM peeps;')
+    result = connect_to_db.exec('SELECT * FROM peeps ORDER BY id desc;')
     result.map do |post|
       Peep.new(id: post['id'], message: post['message'])
     end

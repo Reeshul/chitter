@@ -34,8 +34,8 @@ describe Peep do
       expect(described_class.all.length).to eq 3
     end
 
-    it 'first peep created is the first item in the array of peeps' do
-      expect(described_class.all.first.message).to eq('Peep test message 1')
+    it 'first peep created is the last item in the array of peeps' do
+      expect(described_class.all.first.message).to eq('Peep test message 3')
     end
   end
 
