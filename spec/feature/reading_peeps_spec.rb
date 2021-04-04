@@ -10,5 +10,11 @@ describe Peep do
       page.find('#peeps_container div:first-child', text: 'Peep test message 3')
       page.find('#peeps_container div:last-child', text: 'Peep test message 1')
     end
+
+    it "they should each have a time stamp" do
+      test_peep = described_class.create(message: 'Peep test message')
+      visit('/')
+      expect(first(".post")).to have_content(test_peep.time.strftime("%A at %H:%M"))
+    end
   end
 end
