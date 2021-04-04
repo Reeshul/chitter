@@ -8,7 +8,7 @@ def register_test_user
   visit '/users/new'
   fill_in('email', with: 'test@example.com')
   fill_in('password', with: 'password123')
-  click_button('Register')
+  click_button('Sign up')
 end
 
 # user authentication
