@@ -4,7 +4,7 @@ require 'date'
 require './lib/peep'
 
 describe Peep do
-  let(:peep) { described_class.new(id: 1, message: 'Test peep', time_posted: DateTime.now) }
+  let(:peep) { described_class.new(id: 1, message: 'Test peep', time_posted: DateTime.now, user_email: 'test@example.com') }
 
   describe '#new' do
     it 'makes a new instance of a peep' do
@@ -22,9 +22,9 @@ describe Peep do
 
   describe '.all' do
     before do
-      described_class.create(message: 'Peep test message 1')
-      described_class.create(message: 'Peep test message 2')
-      described_class.create(message: 'Peep test message 3')
+      described_class.create(message: 'Peep test message 1', user_email: 'test@example.com')
+      described_class.create(message: 'Peep test message 2', user_email: 'test@example.com')
+      described_class.create(message: 'Peep test message 3', user_email: 'test@example.com')
     end
 
     it 'returns an array of all the peeps' do
@@ -42,7 +42,7 @@ describe Peep do
 
   describe '.create' do
     it 'returns a newly created peep' do
-      created_peep = described_class.create(message: 'Peep test message')
+      created_peep = described_class.create(message: 'Peep test message', user_email: 'test@example.com')
       expect(created_peep.message).to eq('Peep test message')
     end
   end

@@ -1,0 +1,1 @@
+ALTER TABLE peeps ADD COLUMN user_email VARCHAR(60);

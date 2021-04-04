@@ -7,6 +7,6 @@ p 'Setting up test database...'
 def setup_test_database
   # Connect to test database
   connection = PG.connect(dbname: 'chitter_test')
-  # Clear the peeps table
-  connection.exec('TRUNCATE peeps;')
+  # Clear the tables
+  connection.exec('TRUNCATE peeps, users;')
 end
