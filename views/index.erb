@@ -6,8 +6,8 @@
 <% if @peeps %>
   <div id='peeps_container'>
     <% @peeps.each do |peep| %>
-      <div>
-        <%= peep.message %>
+      <div class="post">
+        <%= peep.message %>, posted on <%= peep.time_posted.strftime("%A at %H:%M") %>
       </div>
     <% end %>
   </div>
