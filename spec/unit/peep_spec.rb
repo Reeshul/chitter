@@ -1,10 +1,10 @@
 # frozen_string_literal: true
 
-require "date"
+require 'date'
 require './lib/peep'
 
 describe Peep do
-  let(:peep) { described_class.new(id: 1, message: 'Test peep', time_posted: DateTime.now()) }
+  let(:peep) { described_class.new(id: 1, message: 'Test peep', time_posted: DateTime.now) }
 
   describe '#new' do
     it 'makes a new instance of a peep' do

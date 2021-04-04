@@ -14,13 +14,14 @@ class Peep
   def self.all
     result = connect_to_db.exec('SELECT * FROM peeps ORDER BY id desc;')
     result.map do |peep|
-      Peep.new(id: peep['id'], message: peep['message'], time_posted: Time.parse(peep["time_posted"]))
+      Peep.new(id: peep['id'], message: peep['message'], time_posted: Time.parse(peep['time_posted']))
     end
   end
 
   def self.create(message:)
     result = connect_to_db.exec("INSERT INTO peeps (message) VALUES ('#{message}') RETURNING id, message, time_posted;")
-    Peep.new(id: result.first['id'], message: result.first['message'], time_posted: Time.parse(result.first["time_posted"]))
+    Peep.new(id: result.first['id'], message: result.first['message'],
+             time_posted: Time.parse(result.first['time_posted']))
   end
 
   def self.connect_to_db
