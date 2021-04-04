@@ -4,7 +4,9 @@ require 'date'
 require './lib/peep'
 
 describe Peep do
-  let(:peep) { described_class.new(id: 1, message: 'Test peep', time_posted: DateTime.now, user_email: 'test@example.com') }
+  let(:peep) do
+    described_class.new(id: 1, message: 'Test peep', time_posted: DateTime.now, user_email: 'test@example.com')
+  end
 
   describe '#new' do
     it 'makes a new instance of a peep' do

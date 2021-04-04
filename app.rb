@@ -2,10 +2,9 @@
 
 require 'sinatra/base'
 require './lib/peep'
-require "./lib/user"
+require './lib/user'
 
 class Chitter < Sinatra::Base
-
   enable :sessions
 
   get '/' do
@@ -27,7 +26,7 @@ class Chitter < Sinatra::Base
   post '/users' do
     user = User.create(email: params[:email], password: params[:password])
     session[:user_id] = user.id
-    redirect("/")
+    redirect('/')
   end
 
   run! if app_file == $PROGRAM_NAME
