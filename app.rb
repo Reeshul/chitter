@@ -20,7 +20,7 @@ class Chitter < Sinatra::Base
     if user
       Peep.create(message: params['post_peep'], user_email: user.email)
     else
-      flash[:notice] = 'Please register or log in to peep.'
+      flash[:alert] = 'Please register or log in to peep.'
     end
     redirect('/')
   end
@@ -45,14 +45,14 @@ class Chitter < Sinatra::Base
       session[:user_id] = user.id
       redirect('/')
     else
-      flash[:notice] = 'Please check your email or password.'
+      flash[:alert] = 'Please check your email or password.'
       redirect('/sessions/new')
     end
   end
 
   post '/sessions/destroy' do
     session.clear
-    flash[:notice] = 'You have signed out.'
+    flash[:alert] = 'You have signed out.'
     redirect('/')
   end
 

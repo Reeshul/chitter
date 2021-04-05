@@ -1,11 +1,7 @@
 <% @append_title=" | Log in" %>
 
-<div>
-   <%= flash[:notice] %>
-</div>
-
-<form action="/sessions" method="post">
-  <input type="email" name="email" placeholder="email" />
-  <input type="password" name="password" placeholder="password" />
-  <input type="submit" value="Log in" />
+<form action="/sessions" method="post" class="form">
+  <input type="email" name="email" placeholder="Email" />
+  <input type="password" name="password" placeholder="Password" />
+  <button type="submit" id="submit-button">Sign in</button>
 </form>

@@ -21,21 +21,21 @@ def sign_in_as_test_user
   visit '/sessions/new'
   fill_in(:email, with: 'test@example.com')
   fill_in(:password, with: 'password123')
-  click_button('Log in')
+  click_button('Sign in')
 end
 
 def sign_in_with_different_email
   visit '/sessions/new'
   fill_in(:email, with: 'nottherightemail@me.com')
   fill_in(:password, with: 'password123')
-  click_button('Log in')
+  click_button('Sign in')
 end
 
 def sign_in_with_different_password
   visit '/sessions/new'
   fill_in(:email, with: 'test@example.com')
   fill_in(:password, with: 'wrongpassword')
-  click_button('Log in')
+  click_button('Sign in')
 end
 
 def log_out
