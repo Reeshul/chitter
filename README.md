@@ -8,7 +8,7 @@ Using TDD principles follow the MVC architecture to build an application that co
 
 ## Technologies used
 
-Ruby w/ Sinatra and PostreSQL. Tested using RSpec (unit) and Capybara (feature).
+Ruby w/ Sinatra and PostreSQL. Tested using RSpec and Capybara.
 
 ## User stories
 
@@ -72,7 +72,7 @@ Lastly I added some styles. Although not really the main purpose of the project 
 - Run the commands in the `db/migrations` directory
 - Exit psql `\q`
 
-Optional - to run the tests a test database will also need to be set up. Create another database called `chitter_test` following steps 4-8 above again.
+Optional - to run the tests a test database will also need to be set up. Create another database called `chitter_test` and run through the above steps again.
 
 #### Using the app
 
@@ -87,14 +87,14 @@ Optional - to run the tests a test database will also need to be set up. Create 
 
 ![image](./demo/coverage.png)
 
-A coverage report can be viewed [here](./demo/coverage-report.html)
+A coverage report can be viewed [here](./demo/coverage-report.html).
 
 ---
 
 ## What next for Chitter
 
 - User story: users can delete their own peeps
-- User story: users 'like' peeps
+- User story: users can 'like' peeps
 - User story: users can reply to peeps
 - User story: users can follow other users
 - Deploy the project on a server
