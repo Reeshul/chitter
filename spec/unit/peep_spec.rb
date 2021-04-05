@@ -43,6 +43,12 @@ describe Peep do
   end
 
   describe '.create' do
+    it 'creates a new peep' do
+      created_peep = described_class.create(message: 'Peep test message', user_email: 'test@example.com')
+      persisted_data = persisted_data(table: :peeps, id: created_peep.id)
+      expect(created_peep.id).to eq persisted_data.first['id']
+    end
+
     it 'returns a newly created peep' do
       created_peep = described_class.create(message: 'Peep test message', user_email: 'test@example.com')
       expect(created_peep.message).to eq('Peep test message')

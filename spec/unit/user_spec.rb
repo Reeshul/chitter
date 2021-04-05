@@ -26,37 +26,42 @@ describe User do
       expect(user.id).to eq persisted_data.first['id']
     end
 
-    it 'hashes the users password using BCrypt' do
+    it 'returns a newly created user' do
+      user = create_test_user
+      expect(user.email).to eq('test@example.com')
+    end
+
+    it 'hashes the users password using bcrypt' do
       expect(BCrypt::Password).to receive(:create).with('password123')
       described_class.create(email: 'test@example.com', password: 'password123')
     end
   end
 
   describe '.find' do
-    it 'finds a user by ID' do
+    it 'finds a user by id' do
       user = create_test_user
       result = described_class.find(id: user.id)
       expect(result.id).to eq user.id
     end
 
-    it 'returns nil if there is no ID given' do
+    it 'returns nil if there is no id given' do
       expect(described_class.find(id: nil)).to eq nil
     end
   end
 
   describe '.authenticate' do
-    it 'returns a user given a correct username and password, if one exists' do
+    it 'returns a user if given a correct username and password' do
       user = create_test_user
       authenticated_user = described_class.authenticate(email: 'test@example.com', password: 'password123')
       expect(authenticated_user.id).to eq user.id
     end
 
-    it 'returns nil given an incorrect email address' do
+    it 'returns nil if given an incorrect email' do
       create_test_user
       expect(described_class.authenticate(email: 'nottherightemail@me.com', password: 'password123')).to be_nil
     end
 
-    it 'returns nil given an incorrect password' do
+    it 'returns nil if given an incorrect password' do
       create_test_user
       expect(described_class.authenticate(email: 'test@example.com', password: 'wrongpassword')).to be_nil
     end
