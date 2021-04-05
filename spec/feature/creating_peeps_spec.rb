@@ -18,7 +18,7 @@ describe Peep do
       visit('/')
       fill_in('post_peep', with: 'Test peep.')
       click_button('Post')
-      expect(page).to have_content('Please register or log in to peep.')
+      expect(page).to have_content('Please register or log in to peep')
     end
   end
 end

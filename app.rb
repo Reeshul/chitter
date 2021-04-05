@@ -20,7 +20,7 @@ class Chitter < Sinatra::Base
     if user
       Peep.create(message: params['post_peep'], user_email: user.email)
     else
-      flash[:alert] = 'Please register or log in to peep.'
+      flash[:alert] = 'Please register or log in to peep'
     end
     redirect('/')
   end

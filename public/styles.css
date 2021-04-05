@@ -55,11 +55,10 @@ body :-ms-input-placeholder {
 }
 .container h1 {
   font-size: 72px;
-  /* transition-duration: 1s;
-  transition-timing-function: ease-in-put; */
   font-weight: 200;
   font-family: "Hachi Maru Pop", cursive;
-  margin: 1rem 2rem;
+  margin: 12px 24px;
+  padding-top: 20px;
 }
 
 .page-heading {
@@ -99,6 +98,13 @@ form input:focus {
   background-color: white;
   width: 250px;
   color: black;
+}
+
+.form-input {
+  margin-bottom: 20px;
+}
+#peep-field {
+  margin-bottom: 24px;
 }
 
 #peep-field:focus {
@@ -240,35 +246,68 @@ form input:focus {
   color: #856404;
   background-color: #fff3cd;
   border-color: #ffeeba;
-  position: relative;
-  padding: 0.75rem 1.25rem;
+  position: absolute;
+  padding: 8px 15px;
   margin-bottom: 1rem;
   border: 1px solid transparent;
   border-radius: 0.25rem;
   font-size: 18px;
   text-align: center;
+  width: 100%;
+  -webkit-animation: alert-animation 4s forwards;
+  animation: alert-animation 4s forwards;
+  height: 44px;
+}
+
+@keyframes alert-animation {
+  0% {
+    transform: translateY(-50px);
+  }
+  15% {
+    transform: translateY(-50px);
+  }
+  50% {
+    transform: translateY(0);
+  }
+  80% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(-50px);
+  }
 }
 
 /* nav */
 
-.nav-menu {
-  display: flex;
+nav {
+  display: inline;
   padding: 10px 10px 0 0;
+  float: right;
+  position: absolute;
+  right: 0;
 }
 
-.logged-out {
-  justify-content: flex-end;
-}
-
-.logged-in {
-  flex-direction: column;
-  align-items: flex-end;
-}
-
-.nav-items {
+nav a {
   text-decoration: none;
   color: black;
   margin: 0 5px;
+}
+
+nav form {
+  display: inline;
+}
+
+nav form button {
+  background: none;
+  border: none;
+  color: black;
+  cursor: pointer;
+  font-family: "Source Sans Pro", sans-serif;
+  font-size: 16px;
+}
+
+nav form button:focus {
+  outline: none;
 }
 
 /* peeps  */
@@ -277,10 +316,8 @@ section {
   margin: 100px auto;
   position: relative;
   padding: 10px 5px;
-  background: hsla(0, 0%, 100%, 0.3);
-  font-size: 20px;
+  background: hsla(0, 0%, 100%, 0.5);
   line-height: 1.5;
-  border-radius: 10px;
   width: 60vw;
   min-width: 300px;
   box-shadow: 5px 3px 30px black;
@@ -290,20 +327,9 @@ section {
   font-weight: 300;
 }
 
-section::before {
-  content: "";
-  margin: -35px;
-  position: absolute;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  filter: blur(20px);
-  z-index: -1;
-}
-
 .post {
   font-size: 18px;
+  padding: 10px 0;
 }
 
 .peep-footer {

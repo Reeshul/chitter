@@ -28,15 +28,12 @@
         </div>
       <% end %>
       <% if @user %>
-      <nav class="nav-menu logged-in">
-        <div>Welcome, <%= @user.email %></div>
-        <form action="/sessions/destroy" method="post">
-          <button type="submit">Log out</button>
-        </form>
+      <nav>
+        Welcome, <%= @user.email %> | <form action="/sessions/destroy" method="post"><button type="submit">Log out</button></form>
       </nav>
       <% else %>
-        <nav class="nav-menu logged-out">
-          <a class="nav-items" href="/users/new">Regiser</a> | <a class="nav-items" href="/sessions/new">Log in</a>
+        <nav>
+          <a href="/users/new">Regiser</a> | <a href="/sessions/new">Log in</a>
         </nav>
       <% end %>
       <div class="container">
