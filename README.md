@@ -8,7 +8,7 @@ Using TDD principles follow the MVC architecture to build an application that co
 
 ## Technologies used
 
-Ruby w/ Sinatra and PostreSQL. Tested using RSpec (unit) and Capybara (feature).
+Ruby w/ Sinatra and PostreSQL. Tested using RSpec and Capybara.
 
 ## User stories
 
